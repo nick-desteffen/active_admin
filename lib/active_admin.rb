@@ -1,7 +1,6 @@
 require 'meta_search'
 require 'meta_search_ext'
 require 'bourbon'
-require 'devise'
 require 'kaminari'
 require 'formtastic'
 require 'sass'
@@ -26,7 +25,9 @@ module ActiveAdmin
   autoload :ControllerAction,         'active_admin/controller_action'
   autoload :CSVBuilder,               'active_admin/csv_builder'
   autoload :Deprecation,              'active_admin/deprecation'
-  autoload :Devise,                   'active_admin/devise'
+  if Object.const_defined?("Devise")
+    autoload :Devise,                   'active_admin/devise'
+  end
   autoload :DSL,                      'active_admin/dsl'
   autoload :Event,                    'active_admin/event'
   autoload :FormBuilder,              'active_admin/form_builder'
